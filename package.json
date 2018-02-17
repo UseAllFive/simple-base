@@ -26,16 +26,16 @@
     ]
   },
   "scripts": {
-    "browserify": "browserify scripts/app.es6 -o build/bundle.js",
+    "browserify": "browserify scripts/app.js -o build/bundle.js",
     "build": "yarn run browserify; yarn run uglifyjs; yarn run sass; yarn run uglifycss",
-    "eslint": "eslint .",
+    "eslint": "eslint scripts",
     "sass": "sass styles/style.scss build/style.css",
     "sasswatch": "sass --watch styles/style.scss:build/style.css",
     "serve": "live-server --ignore=.idea,scripts,styles ./",
     "start": "concurrently \"yarn run sass\" \"yarn run browserify\"; concurrently \"yarn run watchify\" \"yarn run sasswatch\" \"yarn run serve\"; ",
     "uglifycss": "uglifycss build/style.css --output build/style.css",
     "uglifyjs": "uglifyjs build/bundle.js -o build/bundle.js",
-    "watchify": "watchify scripts/app.es6 -o build/bundle.js -v"
+    "watchify": "watchify scripts/app.js -o build/bundle.js -v"
   },
   "pre-commit": [
     "eslint"

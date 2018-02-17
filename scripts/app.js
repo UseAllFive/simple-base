@@ -1,4 +1,4 @@
-import "babel-polyfill";
+import 'babel-polyfill';
 import { TweenMax } from 'gsap';
 
 class App {
@@ -10,4 +10,4 @@ class App {
   }
 }
 
-let app = new App();
+new App();
