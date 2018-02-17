@@ -1,0 +1,61 @@
+{
+  "name": "babel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            [
+              "env",
+              {
+                "targets": {
+                  "browsers": [
+                    "last 2 versions",
+                    "safari >= 7"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "browserify": "browserify scripts/app.es6 -o build/bundle.js",
+    "build": "yarn run browserify; yarn run uglifyjs; yarn run sass; yarn run uglifycss",
+    "eslint": "eslint .",
+    "sass": "sass styles/style.scss build/style.css",
+    "sasswatch": "sass --watch styles/style.scss:build/style.css",
+    "serve": "live-server --ignore=.idea,scripts,styles ./",
+    "start": "concurrently \"yarn run sass\" \"yarn run browserify\"; concurrently \"yarn run watchify\" \"yarn run sasswatch\" \"yarn run serve\"; ",
+    "uglifycss": "uglifycss build/style.css --output build/style.css",
+    "uglifyjs": "uglifyjs build/bundle.js -o build/bundle.js",
+    "watchify": "watchify scripts/app.es6 -o build/bundle.js -v"
+  },
+  "pre-commit": [
+    "eslint"
+  ],
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.1.0",
+    "concurrently": "^3.5.1",
+    "eslint": "^4.18.0",
+    "live-server": "^1.2.0",
+    "node-sass": "^4.7.2",
+    "pre-commit": "^1.2.2",
+    "uglify-js": "^3.3.11",
+    "uglifycss": "^0.0.27",
+    "watchify": "^3.10.0"
+  },
+  "dependencies": {
+    "gsap": "^1.20.4"
+  }
+}
