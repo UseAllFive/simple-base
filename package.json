@@ -27,13 +27,13 @@
     "browserify": "browserify scripts/app.js -o build/bundle.js",
     "build": "yarn browserify; yarn uglifyjs; yarn sass; yarn uglifycss",
     "eslint": "eslint scripts",
+    "precommit": "yarn eslint",
     "sass": "sass styles/style.scss build/style.css",
     "sasswatch": "sass --watch styles/style.scss:build/style.css",
     "serve": "budo scripts/app.js:build/bundle.js --live --host localhost",
     "start": "yarn sass; concurrently -k -p \"[{name}]\" -n \"HTTP,SASS\" -c \"bgBlue.bold,bgMagenta.bold\" \"yarn serve\" \"yarn sasswatch\"",
     "uglifycss": "uglifycss build/style.css --output build/style.css",
-    "uglifyjs": "uglifyjs build/bundle.js -o build/bundle.js",
-    "precommit": "yarn eslint"
+    "uglifyjs": "uglifyjs build/bundle.js -o build/bundle.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

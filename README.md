@@ -18,7 +18,7 @@ git remote set-url origin https://github.com/{my-git-username}/{my-git-repo}.git
 
 ## Commands
 ``` 
-yarn run start; // start node server and livereload
+yarn run start; // start the local budo webserver
 yarn run build; // prep files for production
 ```
 
